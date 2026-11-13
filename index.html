@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<title>ลงชื่อเข้าประชุม · LMPT2</title>
+<meta name="theme-color" content="#0b2545">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230b2545%27/%3E%3Cpath d=%27M9 16.5l4.5 4.5L23 11%27 stroke=%27%230e95a3%27 stroke-width=%273.5%27 fill=%27none%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0b2545;--navy2:#13315c;--teal:#0e95a3;--teal-soft:#dff3f5;--page:#e8eff6;--card:#fff;--ink:#13243b;--ink2:#3d4d66;--mute:#66758c;--line:#d3dde9;--bad:#c2402f}
+  html[data-theme="dark"]{--page:#0a1424;--card:#111f35;--ink:#e3ebf5;--ink2:#b7c5d8;--mute:#8496ae;--line:#22385a;--teal-soft:#0f3340;color-scheme:dark}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;background:var(--page);color:var(--ink);font:16px/1.45 "Noto Sans Thai","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+  .top{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:18px 20px 64px;border-radius:0 0 28px 28px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{background:#fff;border-radius:10px;padding:6px 10px;display:inline-flex}.logo svg{height:26px;width:auto;display:block}
+  .brand small{font-size:12px;letter-spacing:.1em;opacity:.75}
+  .top h1{margin:18px 0 0;font-size:28px;font-weight:700}
+  .top .date{font-size:15px;opacity:.85}
+  .wrap{max-width:540px;margin:-44px auto 0;padding:0 14px 32px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 28px rgba(11,37,69,.10);padding:20px 18px 22px}
+  .q{animation:qin .18s ease-out}@keyframes qin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .q+.q{margin-top:20px}
+  .ql{display:block;font-size:14px;font-weight:700;color:var(--ink2);margin:0 0 8px}
+  .ql i{font-style:normal;color:var(--bad);margin-left:3px}
+  input[type=text],select,textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;font:inherit;font-size:17px;color:var(--ink);background:var(--card);outline:none;appearance:none}
+  input[type=text],select{height:52px}
+  textarea{min-height:96px;padding:12px 14px;resize:vertical}
+  select{padding-right:40px;background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 22px) 23px,calc(100% - 16px) 23px;background-size:6px 6px;background-repeat:no-repeat}
+  input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips.wide{flex-direction:column}
+  .chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:11px 15px;font:inherit;font-size:16px;cursor:pointer;text-align:left}
+  .chips:not(.wide) .chip{border-radius:999px}
+  .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  html[data-theme="dark"] .chip.on{background:var(--teal);border-color:var(--teal);color:#04141a}
+  /* Day / Night switch, as in IOMS */
+  .brand .sp{flex:1}
+  .theme{display:inline-flex;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px;gap:2px}
+  .theme button{display:inline-flex;align-items:center;gap:5px;border:0;background:none;color:rgba(255,255,255,.8);font:inherit;font-size:13px;padding:5px 11px;border-radius:999px;cursor:pointer}
+  .theme button svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .theme button.on{background:#fff;color:var(--navy)}
+  html[data-theme="dark"] .theme button.on{background:var(--teal);color:#04141a}
+  @media (max-width:440px){.brand small{display:none}.logo svg{height:22px}.theme button{padding:5px 9px;font-size:12px}}
+  .check{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;font-size:17px}
+  .check input{width:24px;height:24px;accent-color:var(--teal);margin:0}
+  .check.on{border-color:var(--teal);background:var(--teal-soft)}
+  .bad .ql{color:var(--bad)}.bad input[type=text],.bad select,.bad .check{border-color:var(--bad)}
+  .go{margin-top:26px;width:100%;height:56px;border:0;border-radius:16px;background:var(--teal);color:#fff;font:inherit;font-size:19px;font-weight:700;cursor:pointer}
+  .go:disabled{opacity:.55}
+  .err{color:var(--bad);font-size:15px;margin-top:12px;text-align:center}
+  .done{text-align:center;padding:12px 4px 4px}
+  .tick{width:84px;height:84px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;margin:4px auto 14px}
+  .tick svg{width:44px;height:44px;stroke:var(--teal);stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .done h2{margin:0 0 4px;font-size:24px}.done p{margin:0;color:var(--ink2)}
+  .num{display:inline-block;margin-top:14px;background:var(--page);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--ink2)}.num b{color:var(--ink);font-size:16px}
+  .who{margin-top:18px;text-align:left;border-top:1px solid var(--line);padding-top:12px}
+  .who h3{margin:0 0 6px;font-size:14px;color:var(--ink2)}
+  .who ol{margin:0;padding-left:26px;font-size:15px}.who li{padding:2px 0}
+  .again{margin-top:18px;background:none;border:1.5px solid var(--line);color:var(--ink);border-radius:12px;height:46px;padding:0 18px;font:inherit;cursor:pointer}
+  .keep{margin-top:16px;text-align:left;background:var(--teal-soft);border-radius:14px;padding:12px 14px;font-size:14px;color:var(--ink)}.keep b:first-child{display:block;margin-bottom:2px}
+  .loading{text-align:center;color:var(--mute);padding:24px 0}
+  .foot{text-align:center;color:var(--mute);font-size:12px;margin-top:16px}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand"><span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="8 6 518 104" role="img" aria-label="PE LNG"><defs><linearGradient id="peLngG" gradientUnits="userSpaceOnUse" x1="305" y1="0" x2="400" y2="0"><stop offset="0" stop-color="#00AEEF"/><stop offset="1" stop-color="#3D8BFF"/></linearGradient></defs><path fill="#00AEEF" d="M13.91 105.37 C13.79 105.08 18.15 91.25 19.62 87.25 C19.80 86.77 21.10 82.83 22.51 78.50 C27.96 61.79 30.08 55.33 30.51 54.12 C30.76 53.44 32.11 49.33 33.51 45.00 C34.91 40.67 36.27 36.60 36.53 35.95 C36.79 35.31 37.00 34.60 37.00 34.38 C37.00 34.15 37.21 33.44 37.47 32.80 C37.72 32.15 38.87 28.76 40.00 25.25 C41.14 21.74 42.27 18.31 42.51 17.62 C42.76 16.94 43.32 15.22 43.76 13.80 C44.27 12.18 44.73 11.15 45.01 10.99 C45.59 10.68 105.66 10.68 110.00 10.99 C112.78 11.19 116.47 11.89 117.88 12.48 C121.18 13.86 122.86 14.89 124.57 16.57 C127.44 19.39 128.78 22.25 129.27 26.64 C129.58 29.32 129.31 33.90 128.71 36.38 C128.58 36.92 128.32 37.99 128.15 38.75 C127.75 40.42 126.14 45.20 125.44 46.75 C122.34 53.64 119.45 58.01 115.22 62.18 C110.86 66.48 105.88 69.61 100.62 71.36 C97.03 72.56 96.06 72.81 93.13 73.31 C90.31 73.79 88.89 73.83 70.31 73.93 L50.50 74.03 L49.85 74.88 C49.49 75.35 49.11 76.11 48.99 76.56 C48.79 77.34 48.46 78.35 47.50 81.12 C47.26 81.81 45.91 85.92 44.50 90.25 C43.08 94.58 41.42 99.64 40.81 101.50 C40.20 103.36 39.53 105.07 39.31 105.31 C38.95 105.72 38.01 105.75 26.49 105.75 C15.64 105.75 14.04 105.70 13.91 105.37 Z M86.75 53.27 C88.65 52.87 91.68 51.76 92.03 51.34 C92.18 51.15 92.42 51.00 92.56 51.00 C93.46 51.00 96.60 47.25 97.80 44.75 C98.75 42.77 99.75 39.09 99.75 37.54 C99.75 34.91 97.99 32.72 95.04 31.70 C93.38 31.13 93.35 31.12 79.17 31.12 L64.96 31.12 L64.16 32.00 C63.51 32.71 63.02 33.91 61.64 38.13 C60.70 41.01 59.23 45.51 58.36 48.12 C57.18 51.71 56.85 52.98 57.04 53.33 C57.27 53.76 57.91 53.78 71.33 53.68 C80.78 53.60 85.82 53.47 86.75 53.27 Z"/><path fill="#FFCB04" d="M148.25 105.25 C139.24 103.98 132.74 100.76 128.79 95.61 C127.40 93.80 125.42 89.96 125.03 88.33 C124.91 87.80 124.62 86.70 124.39 85.88 C123.84 83.91 123.60 76.36 123.96 72.59 C124.31 69.00 125.49 63.07 126.63 59.25 C128.14 54.18 129.26 50.69 130.24 48.00 C130.41 47.52 130.71 46.67 130.91 46.12 C131.10 45.58 131.37 44.90 131.49 44.62 C131.62 44.35 132.07 43.28 132.51 42.25 C133.38 40.15 135.98 34.87 136.82 33.45 C141.09 26.30 145.94 21.10 151.38 17.83 C152.14 17.37 156.23 15.36 157.53 14.80 C160.15 13.68 166.28 12.20 170.25 11.73 C171.56 11.58 173.30 11.34 174.12 11.21 C175.00 11.07 187.65 10.91 204.64 10.83 C230.37 10.72 233.69 10.75 233.96 11.08 C234.29 11.47 233.89 12.85 230.97 21.52 C230.44 23.11 230.00 24.57 230.00 24.77 C230.00 24.96 229.82 25.46 229.61 25.86 C229.40 26.26 229.13 27.06 229.00 27.63 C228.87 28.21 228.54 29.19 228.27 29.83 L227.78 30.98 L203.45 31.06 C179.35 31.13 179.10 31.14 176.67 31.69 C171.89 32.77 168.47 35.03 165.39 39.11 C164.63 40.13 164.00 41.02 164.00 41.10 C164.00 41.17 163.74 41.61 163.43 42.07 C162.25 43.81 160.42 47.67 160.57 48.08 C160.72 48.47 162.66 48.50 185.84 48.50 C209.19 48.50 210.96 48.53 211.11 48.92 C211.20 49.16 210.98 50.20 210.63 51.24 C209.83 53.60 207.33 61.28 206.25 64.70 C205.80 66.12 205.28 67.44 205.08 67.64 C204.76 67.95 201.19 68.00 179.49 68.00 C150.21 68.00 153.68 67.55 152.80 71.43 C151.73 76.20 152.20 78.91 154.50 81.27 C155.26 82.04 156.36 82.92 156.95 83.23 C158.34 83.93 160.97 84.75 162.88 85.06 C163.73 85.20 174.16 85.38 187.12 85.47 L209.88 85.62 L209.84 86.50 C209.83 86.98 209.42 88.50 208.94 89.88 C208.47 91.25 207.37 94.57 206.51 97.25 C204.40 103.80 203.96 105.07 203.68 105.44 C203.49 105.68 197.97 105.74 177.41 105.72 C154.06 105.69 151.05 105.64 148.25 105.25 Z"/><path fill="url(#peLngG)" d="M269.12 105.26 C261.59 104.16 256.50 101.72 252.86 97.45 C249.62 93.66 248.26 88.05 248.96 81.41 C249.30 78.24 249.76 76.32 251.42 71.25 C252.16 68.98 252.87 66.79 253.00 66.38 C253.12 65.96 253.80 63.99 254.50 62.00 C255.20 60.01 255.88 58.04 256.00 57.62 C256.13 57.21 257.02 54.57 257.99 51.75 C258.96 48.93 260.37 44.83 261.12 42.62 C261.87 40.42 263.22 36.49 264.13 33.88 C265.03 31.26 265.92 28.62 266.11 28.00 C266.81 25.75 269.29 18.60 269.64 17.84 C269.84 17.40 270.00 16.87 270.00 16.64 C270.00 16.03 271.22 13.72 271.96 12.91 C272.33 12.52 273.16 11.93 273.80 11.60 C274.98 11.00 275.03 11.00 282.93 11.00 C290.52 11.00 290.93 11.02 291.88 11.52 C293.43 12.34 294.65 13.67 295.23 15.17 C295.93 17.01 295.89 17.98 295.00 20.63 C294.58 21.87 294.09 23.38 293.89 24.00 C293.70 24.62 292.79 27.26 291.88 29.88 C290.97 32.49 290.12 34.96 290.00 35.38 C289.88 35.79 289.03 38.26 288.13 40.88 C287.22 43.49 285.82 47.59 285.00 50.00 C284.18 52.41 282.78 56.51 281.87 59.12 C280.97 61.74 280.12 64.21 280.00 64.62 C279.88 65.04 279.44 66.33 279.02 67.50 C277.24 72.49 276.84 75.90 277.73 78.74 C278.48 81.16 280.45 83.20 283.00 84.21 C285.67 85.25 286.53 85.32 298.17 85.43 L309.46 85.54 L309.84 84.96 C310.21 84.37 311.62 80.22 314.49 71.25 C315.35 68.57 316.24 65.81 316.49 65.12 C316.73 64.44 317.41 62.36 318.00 60.50 C318.59 58.64 319.27 56.56 319.51 55.88 C319.76 55.19 320.65 52.43 321.51 49.75 C322.37 47.07 323.71 42.91 324.49 40.50 C325.28 38.09 326.63 33.93 327.50 31.25 C328.37 28.57 329.74 24.35 330.54 21.88 C331.34 19.40 332.25 16.59 332.56 15.62 C333.00 14.27 333.39 13.61 334.30 12.68 C334.95 12.03 335.77 11.38 336.13 11.25 C336.53 11.10 342.03 11.00 350.43 11.00 C364.06 11.00 364.07 11.00 365.19 11.56 C367.25 12.59 368.35 14.60 368.87 18.25 C368.96 18.87 369.25 20.56 369.52 22.00 C369.79 23.44 370.23 25.83 370.51 27.31 C370.78 28.79 371.22 31.21 371.50 32.69 C371.77 34.17 372.22 36.67 372.51 38.25 C372.79 39.83 373.24 42.33 373.51 43.81 C373.78 45.29 374.22 47.71 374.49 49.19 C374.76 50.67 375.10 52.49 375.24 53.25 C375.39 54.01 375.72 55.86 375.99 57.38 C376.26 58.89 376.72 61.42 377.01 63.00 C377.30 64.58 377.62 66.32 377.71 66.87 C377.92 68.05 378.62 68.37 378.97 67.46 C379.09 67.14 379.83 64.91 380.60 62.50 C382.02 58.07 383.92 52.21 386.50 44.25 C387.28 41.84 388.40 38.36 389.00 36.50 C389.59 34.64 390.27 32.56 390.52 31.88 C390.76 31.19 391.66 28.43 392.51 25.75 C396.50 13.19 396.69 12.74 398.73 11.55 L399.88 10.88 L409.14 10.88 L418.41 10.88 L419.49 11.59 C422.61 13.65 422.98 15.81 421.16 21.33 C420.57 23.14 419.37 26.82 418.50 29.50 C417.63 32.18 416.28 36.34 415.49 38.75 C414.71 41.16 413.37 45.32 412.51 48.00 C411.65 50.68 410.76 53.44 410.51 54.12 C410.27 54.81 409.36 57.57 408.50 60.25 C407.63 62.93 406.28 67.09 405.50 69.50 C403.76 74.81 401.52 81.75 399.47 88.12 C398.64 90.74 397.75 93.44 397.51 94.12 C397.27 94.81 396.52 97.05 395.86 99.09 C394.79 102.39 394.53 102.93 393.60 103.86 C391.71 105.75 391.72 105.75 377.10 105.75 C365.76 105.75 364.14 105.70 363.19 105.34 C360.61 104.34 359.51 102.74 358.90 99.09 C358.69 97.87 358.29 95.58 358.00 94.00 C357.71 92.42 357.32 90.11 357.12 88.88 C356.93 87.64 356.65 86.17 356.51 85.62 C356.37 85.08 356.08 83.56 355.88 82.25 C355.68 80.94 355.39 79.26 355.25 78.50 C355.10 77.74 354.75 75.83 354.47 74.25 C354.20 72.67 353.75 70.19 353.49 68.75 C353.23 67.31 352.80 64.83 352.52 63.25 C352.24 61.67 351.90 59.76 351.75 59.00 C351.61 58.24 351.32 56.61 351.12 55.38 C350.92 54.14 350.64 52.56 350.50 51.88 C350.37 51.19 350.17 50.13 350.06 49.52 C349.84 48.26 349.37 47.93 349.03 48.79 C348.90 49.11 347.92 52.08 346.86 55.38 C345.80 58.67 344.29 63.34 343.50 65.75 C342.72 68.16 341.31 72.49 340.37 75.38 C339.44 78.26 338.09 82.42 337.37 84.62 C336.66 86.83 335.79 89.58 335.43 90.75 C333.21 98.10 331.63 102.44 330.82 103.46 C330.42 103.96 329.54 104.66 328.86 105.00 L327.62 105.62 L299.88 105.66 C274.68 105.69 271.85 105.65 269.12 105.26 Z M433.89 105.24 C423.04 103.73 415.94 99.31 412.41 91.88 C411.29 89.52 411.28 89.48 410.74 87.38 C408.87 80.09 409.97 69.66 413.77 58.62 C414.19 57.39 414.70 55.87 414.90 55.25 C415.10 54.63 415.43 53.77 415.63 53.34 C415.83 52.90 416.00 52.40 416.01 52.21 C416.01 52.03 416.23 51.42 416.50 50.88 C416.77 50.33 416.99 49.75 416.99 49.59 C417.00 49.34 417.26 48.72 418.62 45.62 C420.63 41.09 421.63 39.09 423.99 34.88 C427.89 27.92 434.31 21.09 440.12 17.71 C445.20 14.75 452.45 12.47 459.12 11.73 C460.50 11.58 462.47 11.36 463.50 11.24 C464.53 11.12 476.72 11.02 490.60 11.01 L515.82 11.00 L516.72 11.54 C520.05 13.53 520.87 16.33 519.40 20.62 C519.03 21.73 518.56 22.98 518.36 23.41 C518.16 23.85 518.00 24.35 518.00 24.54 C518.00 25.17 516.78 27.87 516.12 28.69 C515.76 29.15 515.00 29.82 514.42 30.19 L513.38 30.88 L491.50 31.02 C470.81 31.16 469.49 31.19 467.12 31.67 C460.54 33.01 456.66 35.20 452.55 39.87 C448.95 43.98 445.91 49.78 441.53 60.94 C440.55 63.44 439.28 67.49 438.60 70.25 C437.94 72.96 437.94 77.97 438.61 79.51 C440.14 83.01 443.41 84.71 449.67 85.24 C453.72 85.59 466.58 85.58 467.88 85.23 C470.26 84.59 471.54 83.10 472.72 79.62 C473.14 78.39 474.05 75.74 474.74 73.75 C475.43 71.76 475.99 69.83 476.00 69.47 C476.00 68.17 475.78 68.13 467.52 68.00 L459.88 67.88 L458.76 67.12 C457.19 66.06 456.07 64.50 455.85 63.06 C455.62 61.53 455.96 59.82 457.24 56.12 C458.61 52.17 459.11 51.18 460.19 50.23 C462.11 48.54 460.91 48.63 481.88 48.55 C495.97 48.49 501.25 48.55 502.32 48.77 C504.03 49.13 505.30 50.04 506.37 51.70 C507.05 52.74 507.12 53.04 507.12 54.86 C507.11 56.21 506.97 57.17 506.69 57.75 C506.46 58.23 505.71 60.31 505.01 62.38 C504.32 64.44 503.02 68.26 502.12 70.88 C501.22 73.49 500.09 76.81 499.61 78.25 C499.13 79.69 498.63 81.10 498.50 81.38 C498.37 81.65 497.64 83.73 496.89 86.00 C494.15 94.22 492.72 98.39 492.36 99.16 C492.16 99.60 492.00 100.13 492.00 100.36 C492.00 101.10 490.81 103.11 489.83 104.03 C487.89 105.86 489.58 105.75 461.93 105.72 C439.46 105.70 436.82 105.65 433.89 105.24 Z"/></svg></span><small id="sub"></small><span class="sp"></span>
+    <span class="theme" role="group" aria-label="ธีม"><button type="button" data-t="light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Day</button><button type="button" data-t="dark"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Night</button></span></div>
+  <h1 id="ttl"></h1>
+  <div class="date" id="dt"></div>
+</div>
+<div class="wrap">
+  <form class="card" id="form" novalidate>
+    <div id="qs"><div class="loading">กำลังโหลด…</div></div>
+    <button class="go" id="go" type="submit">ลงชื่อ</button>
+    <div class="err" id="err"></div>
+  </form>
+  <div class="card done" id="done" hidden>
+    <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 id="dn"></h2>
+    <p id="dmsg"></p>
+    <div class="num" id="dnum"></div>
+    <div class="who"><h3 id="dwho"></h3><ol id="dlist"></ol></div>
+    <button class="again" id="again" type="button">ลงชื่อคนถัดไป</button>
+  </div>
+  <div class="foot">LMPT2 · IOMS</div>
+</div>
+<datalist id="staff"></datalist>
+<script>
+  /* Day / Night: remembered on this phone; first time follows the phone's own setting */
+  (function () { var K = 'lmpt2.signin.theme', t = null; try { t = localStorage.getItem(K); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    function set(v) { document.documentElement.setAttribute('data-theme', v);
+      [].forEach.call(document.querySelectorAll('.theme button'), function (b) { b.classList.toggle('on', b.getAttribute('data-t') === v); }); }
+    set(t);
+    document.querySelector('.theme').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return;
+      var v = b.getAttribute('data-t'); set(v); try { localStorage.setItem(K, v); } catch (er) {} });
+  })();
+  /* ===== the one setting: the Apps Script web app address (Deploy > Manage deployments > Web app URL, ends in /exec) ===== */
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbygRVW4ZbWnsieEQnpM2FXoUu7F-P2E7SkQgf3nFI0f6FFZLXtnn35pLcmf011POhtwrQ/exec';
+
+  /* the form (questions, choices, staff names, today's date) comes from the Apps Script; the last copy is kept on this
+     phone so the page opens at once, and is refreshed every visit */
+  var CFGKEY = 'lmpt2.signin.cfg', started = false, cached = null;
+  try { cached = JSON.parse(localStorage.getItem(CFGKEY) || 'null'); } catch (e) {}
+  function plantToday() { var d = new Date(Date.now() + 7 * 3600e3); return d.toISOString().slice(0, 10); }
+  if (cached && cached.fields) { cached.today = plantToday(); start(cached); }
+  if (!/\/exec(\?|$)/.test(GAS_URL)) document.getElementById('qs').innerHTML = '<div class="loading">ยังไม่ได้ตั้ง GAS_URL ใน index.html</div>';
+  else fetch(GAS_URL + '?api=config', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (c) {
+    if (!c || !c.fields) throw new Error('bad config');
+    var old = cached && JSON.stringify({ f: cached.fields, s: cached.staff, t: cached.title });
+    try { localStorage.setItem(CFGKEY, JSON.stringify(c)); } catch (e) {}
+    if (!started) start(c);
+    else if (old !== JSON.stringify({ f: c.fields, s: c.staff, t: c.title })) location.reload();   /* the form was changed */
+  }).catch(function () { if (!started) document.getElementById('qs').innerHTML = '<div class="loading">เชื่อมต่อไม่ได้ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่</div>'; });
+
+  function post(data) {   /* text/plain: a "simple" request, so the browser sends it to Google without an extra check */
+    return fetch(GAS_URL, { method: 'POST', body: JSON.stringify({ action: 'signin', data: data }) }).then(function (r) { return r.json(); });
+  }
+
+  function start(CFG) {
+  started = true;
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var D = new Date(CFG.today + 'T00:00:00'), dateText = D.toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  $('ttl').textContent = CFG.title; $('sub').textContent = CFG.subtitle; $('dt').textContent = dateText;
+  $('staff').innerHTML = (CFG.staff || []).map(function (n) { return '<option value="' + esc(n) + '">'; }).join('');
+  var KEEP = 'lmpt2.signin.v2', V = {};      /* answers; name and who-you-are are remembered on this phone */
+  var NOKEEP = { meeting: 1, handover: 1, certify: 1, followup: 1 };
+  try { V = JSON.parse(localStorage.getItem(KEEP) || '{}') || {}; } catch (e) { V = {}; }
+  Object.keys(NOKEEP).forEach(function (k) { delete V[k]; });
+  try { var qp = new URLSearchParams(location.search); CFG.fields.forEach(function (f) { if (qp.get(f.key) && !NOKEEP[f.key]) V[f.key] = qp.get(f.key); }); } catch (e) {}   /* an old personal link still works */
+
+  /* every question once; showIf decides which are on screen (same rule as the server) */
+  $('qs').innerHTML = CFG.fields.map(function (f) {
+    var lab = '<label class="ql">' + esc(f.label) + (f.required ? '<i>*</i>' : '') + '</label>', body;
+    if (f.type === 'chips') body = '<div class="chips' + (f.wide ? ' wide' : '') + '">' + f.options.map(function (o) { return '<button type="button" class="chip" data-v="' + esc(o) + '">' + esc(o) + '</button>'; }).join('') + '</div>';
+    else if (f.type === 'select') body = '<select><option value="">เลือก…</option>' + f.options.map(function (o) { return '<option>' + esc(o) + '</option>'; }).join('') + '</select>';
+    else if (f.type === 'check') body = '<label class="check"><input type="checkbox"><span>' + esc(f.checkLabel || 'Yes') + '</span></label>';
+    else if (f.type === 'textarea') body = '<textarea placeholder="' + esc(f.placeholder || '') + '"></textarea>';
+    else body = '<input type="text"' + (f.type === 'name' ? ' list="staff" name="name" autocomplete="name" enterkeyhint="done"' : ' autocomplete="off"') + ' placeholder="' + esc(f.placeholder || '') + '">';
+    return '<div class="q" data-k="' + esc(f.key) + '" hidden>' + lab + body + '</div>';
+  }).join('');
+  function box(k) { return document.querySelector('.q[data-k="' + k + '"]'); }
+  function paint() {      /* values -> controls */
+    CFG.fields.forEach(function (f) { var b = box(f.key), v = V[f.key] || '';
+      if (f.type === 'chips') [].forEach.call(b.querySelectorAll('.chip'), function (c) { c.classList.toggle('on', c.getAttribute('data-v') === v); });
+      else if (f.type === 'check') { var cb = b.querySelector('input'); cb.checked = !!v; b.querySelector('.check').classList.toggle('on', !!v); }
+      else { var el = b.querySelector('select,textarea,input'); if (el.value !== v) el.value = v; } });
+    show(); remember();
+  }
+  /* who you are is kept on this phone as you fill it in */
+  function remember() { var keep = {}; Object.keys(V).forEach(function (k) { if (!NOKEEP[k] && V[k]) keep[k] = V[k]; });
+    try { localStorage.setItem(KEEP, JSON.stringify(keep)); } catch (e) {} }
+  function shown() { var on = {};
+    CFG.fields.forEach(function (f) { on[f.key] = !(f.showIf || []).some(function (c) { return !on[c.f] || (c.in || []).indexOf(V[c.f]) < 0; }); });
+    return on; }
+  function show() { var on = shown(); CFG.fields.forEach(function (f) { box(f.key).hidden = !on[f.key]; }); }
+  $('qs').addEventListener('click', function (e) {
+    var c = e.target.closest('.chip'); if (!c) return; var q = c.closest('.q');
+    V[q.getAttribute('data-k')] = c.getAttribute('data-v'); q.classList.remove('bad'); $('err').textContent = ''; paint();
+  });
+  $('qs').addEventListener('input', function (e) { var q = e.target.closest('.q'); if (!q) return; var k = q.getAttribute('data-k');
+    V[k] = e.target.type === 'checkbox' ? (e.target.checked ? '1' : '') : e.target.value; q.classList.remove('bad'); $('err').textContent = ''; paint(); });
+  $('qs').addEventListener('change', function (e) { var q = e.target.closest('.q'); if (!q) return; var k = q.getAttribute('data-k');
+    V[k] = e.target.type === 'checkbox' ? (e.target.checked ? '1' : '') : e.target.value; paint(); });
+  paint();
+
+  $('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var on = shown(), data = {}, miss = null;
+    CFG.fields.forEach(function (f) { data[f.key] = on[f.key] ? (V[f.key] || '') : '';
+      if (on[f.key] && f.required && !String(data[f.key]).trim() && !miss) miss = f; });
+    if (miss) { var q = box(miss.key); q.classList.add('bad'); q.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      $('err').textContent = (miss.type === 'name' || miss.type === 'text' || miss.type === 'textarea' ? 'กรุณากรอก ' : miss.type === 'check' ? 'กรุณาติ๊ก ' : 'กรุณาเลือก ') + miss.label; return; }
+    $('go').disabled = true; $('go').textContent = 'กำลังลงชื่อ…'; $('err').textContent = '';
+    post(data).then(function (r) {
+      $('go').disabled = false; $('go').textContent = 'ลงชื่อ';
+      if (!r || !r.ok) { $('err').textContent = (r && r.error) || 'ลงชื่อไม่สำเร็จ ลองอีกครั้ง'; return; }
+      try { var keep = {}; Object.keys(V).forEach(function (k) { if (!NOKEEP[k]) keep[k] = V[k]; }); localStorage.setItem(KEEP, JSON.stringify(keep)); } catch (e) {}
+      $('dn').textContent = r.already ? 'ลงชื่อไว้แล้ว' : 'ขอบคุณ ' + r.name;
+      $('dmsg').textContent = (r.already ? r.name + ' ลงชื่อ ' : 'ลงชื่อ ') + (r.group || '') + ' ' + dateText + (r.already ? ' ไว้แล้ว' : ' เรียบร้อย');
+      $('dnum').innerHTML = 'ลงชื่อแล้ว <b>' + r.count + '</b> คน';
+      $('dwho').textContent = 'ผู้เข้าประชุม' + (r.group ? ' ' + r.group : '') + ' วันนี้';
+      $('dlist').innerHTML = r.names.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('');
+      remember();
+      $('form').hidden = true; $('done').hidden = false; window.scrollTo(0, 0);
+    }).catch(function () {
+      $('go').disabled = false; $('go').textContent = 'ลงชื่อ';
+      $('err').textContent = 'เชื่อมต่อไม่ได้ ตรวจสอบอินเทอร์เน็ตแล้วลองอีกครั้ง';
+    });
+  });
+  $('again').addEventListener('click', function () {
+    V = {}; try { localStorage.removeItem(KEEP); } catch (e) {}
+    [].forEach.call(document.querySelectorAll('#qs .bad'), function (q) { q.classList.remove('bad'); });
+    paint(); $('done').hidden = true; $('form').hidden = false; window.scrollTo(0, 0);
+  });
+  }
+</script>
+</body>
+</html>
