@@ -13,7 +13,7 @@
   html[data-theme="dark"]{--page:#0a1424;--card:#111f35;--ink:#e3ebf5;--ink2:#b7c5d8;--mute:#8496ae;--line:#22385a;--teal-soft:#0f3340;color-scheme:dark}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;background:var(--page);color:var(--ink);font:16px/1.45 "Noto Sans Thai","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
-  .top{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:18px 20px 64px;border-radius:0 0 28px 28px}
+  .top{background:linear-gradient(180deg,rgba(8,26,50,.55) 0%,rgba(8,26,50,.15) 45%,rgba(8,26,50,.10) 75%,rgba(8,26,50,.35) 100%),url("bg.jpg") center 58%/cover no-repeat,var(--navy);color:#fff;padding:18px 20px 130px;border-radius:0 0 28px 28px;text-shadow:0 1px 6px rgba(0,0,0,.35)}
   .brand{display:flex;align-items:center;gap:12px}
   .logo{background:#fff;border-radius:10px;padding:6px 10px;display:inline-flex}.logo svg{height:26px;width:auto;display:block}
   .brand small{font-size:12px;letter-spacing:.1em;opacity:.75}
@@ -34,6 +34,8 @@
   .chips.wide{flex-direction:column}
   .chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:11px 15px;font:inherit;font-size:16px;cursor:pointer;text-align:left}
   .chips:not(.wide) .chip{border-radius:999px}
+  .chip{display:flex;align-items:center;gap:10px}.chip .hint{margin-left:auto;font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .chip.on .hint{color:rgba(255,255,255,.8)}html[data-theme="dark"] .chip.on .hint{color:#04141a}
   .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
   html[data-theme="dark"] .chip.on{background:var(--teal);border-color:var(--teal);color:#04141a}
   /* Day / Night switch, as in IOMS */
@@ -101,7 +103,7 @@
       var v = b.getAttribute('data-t'); set(v); try { localStorage.setItem(K, v); } catch (er) {} });
   })();
   /* ===== the one setting: the Apps Script web app address (Deploy > Manage deployments > Web app URL, ends in /exec) ===== */
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbygRVW4ZbWnsieEQnpM2FXoUu7F-P2E7SkQgf3nFI0f6FFZLXtnn35pLcmf011POhtwrQ/exec';
+  var GAS_URL = 'PASTE-YOUR-EXEC-ADDRESS-HERE';
 
   /* the form (questions, choices, staff names, today's date) comes from the Apps Script; the last copy is kept on this
      phone so the page opens at once, and is refreshed every visit */
@@ -138,7 +140,7 @@
   /* every question once; showIf decides which are on screen (same rule as the server) */
   $('qs').innerHTML = CFG.fields.map(function (f) {
     var lab = '<label class="ql">' + esc(f.label) + (f.required ? '<i>*</i>' : '') + '</label>', body;
-    if (f.type === 'chips') body = '<div class="chips' + (f.wide ? ' wide' : '') + '">' + f.options.map(function (o) { return '<button type="button" class="chip" data-v="' + esc(o) + '">' + esc(o) + '</button>'; }).join('') + '</div>';
+    if (f.type === 'chips') body = '<div class="chips' + (f.wide ? ' wide' : '') + '">' + f.options.map(function (o) { var h = (f.hints || {})[o]; return '<button type="button" class="chip" data-v="' + esc(o) + '"><span>' + esc(o) + '</span>' + (h ? '<small class="hint">' + esc(h) + '</small>' : '') + '</button>'; }).join('') + '</div>';
     else if (f.type === 'select') body = '<select><option value="">เลือก…</option>' + f.options.map(function (o) { return '<option>' + esc(o) + '</option>'; }).join('') + '</select>';
     else if (f.type === 'check') body = '<label class="check"><input type="checkbox"><span>' + esc(f.checkLabel || 'Yes') + '</span></label>';
     else if (f.type === 'textarea') body = '<textarea placeholder="' + esc(f.placeholder || '') + '"></textarea>';
